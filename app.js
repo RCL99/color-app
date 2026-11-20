@@ -1,6 +1,6 @@
 const cols = Array.from(document.querySelectorAll('.col'))
 
-function GenerateRandomColor() {
+function generateRandomColor() {
     const hexCodes = '123456789ABCDEF'
     let color = '#'
     for (let i = 0; i < 6; i++) {
@@ -9,7 +9,7 @@ function GenerateRandomColor() {
     return color
 }
 
-const SetRandomColor = (startColors) => {
+const setRandomColor = (startColors) => {
     const startValues = startColors === undefined ? [] : startColors
     console.log(startColors)
     const allColors = []
@@ -29,13 +29,13 @@ const SetRandomColor = (startColors) => {
         col.style.backgroundColor = color
         header.textContent = color
 
-        SetElementColor(header, color)
-        SetElementColor(icon, color)
+        setElementColor(header, color)
+        setElementColor(icon, color)
     })
     updateLocationHash(allColors)
 }
 
-const SetElementColor = (elem, color) => {
+const setElementColor = (elem, color) => {
     const luminance = chroma(color).luminance()
     elem.style.color = luminance > 0.5 ? "black" : "white"
 }
@@ -54,7 +54,7 @@ document.addEventListener('click', (e) => {
 
 document.addEventListener('keydown', (e) => {
     if (e.code.toLowerCase() === 'space') {
-        SetRandomColor()
+        setRandomColor()
     }
 })
 
@@ -71,4 +71,4 @@ function getColorsFromHash() {
 }
 
 const startColors = getColorsFromHash()
-SetRandomColor(startColors)
+setRandomColor(startColors)
